@@ -25,15 +25,32 @@ const training = [
     years: '2006-2008',
   },
   {
-    type: 'Fellowship in Adult Transitions in Developmental Pediatrics',
-    institution: 'Cincinnati Children\'s Hospital',
+    type: 'Fellowship in Developmental-Behavioral Pediatrics',
+    institution: 'Cincinnati Children\'s Hospital Medical Center',
     years: '2005-2006',
   },
   {
     type: 'Residency in Internal Medicine and Pediatrics',
-    institution: 'University Hospital and Cincinnati Children\'s Hospital',
+    institution: 'University of Cincinnati Medical Center',
     years: '2002-2005',
   },
+  {
+    type: 'Internship',
+    institution: 'Vanderbilt University Medical Center',
+    years: '2001-2002',
+  },
+]
+
+const practiceLocations = [
+  { name: 'Florence', address: '7388 Turfway Road, Florence, KY' },
+  { name: 'Crittenden', address: 'Regional Diabetes Center, Crittenden, KY' },
+  { name: 'Williamstown', address: '300 Barnes Road, Williamstown, KY' },
+]
+
+const hospitalAffiliations = [
+  'St. Elizabeth Florence Hospital',
+  'St. Elizabeth Edgewood Hospital',
+  'St. Elizabeth Grant Hospital',
 ]
 
 const certifications = [
@@ -58,6 +75,7 @@ const positions = [
     title: 'Adjunct Assistant Professor of Medicine',
     organization: 'University of Kentucky College of Medicine - Northern Kentucky Campus',
     period: '2020 - Present',
+    detail: 'Course Director for MD 824: Endocrinology and Reproductive Systems',
   },
   {
     title: 'Co-founder and Chief Medical Officer',
@@ -100,15 +118,12 @@ export default function About() {
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div className="w-64 h-64 bg-gradient-to-br from-navy-700 to-navy-800 rounded-lg flex items-center justify-center border-2 border-gold-600/30">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-navy-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-navy-400 text-sm">Professional Photo</p>
-                </div>
+              <div className="w-64 h-80 rounded-lg overflow-hidden border-2 border-gold-600/30 shadow-xl">
+                <img
+                  src="/images/dr-eilerman.jpg"
+                  alt="Dr. Bradley Scott Eilerman, M.D., M.H.I."
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </div>
@@ -125,14 +140,64 @@ export default function About() {
                 <h3 className="font-semibold text-navy-900 text-lg">{position.title}</h3>
                 <p className="text-gold-700 font-medium">{position.organization}</p>
                 <p className="text-navy-500 text-sm mt-1">{position.period}</p>
+                {'detail' in position && position.detail && (
+                  <p className="text-navy-600 text-sm mt-2 italic">{position.detail}</p>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Board Certifications */}
+      {/* Practice Locations & Affiliations */}
       <section className="py-16 bg-navy-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="section-heading mb-6">Practice Locations</h2>
+              <div className="space-y-4">
+                {practiceLocations.map((location, index) => (
+                  <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
+                    <svg className="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div>
+                      <h3 className="font-semibold text-navy-900">{location.name}</h3>
+                      <p className="text-navy-600 text-sm">{location.address}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="section-heading mb-6">Hospital Affiliations</h2>
+              <div className="space-y-4">
+                {hospitalAffiliations.map((hospital, index) => (
+                  <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
+                    <svg className="w-5 h-5 text-gold-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    <span className="text-navy-900 font-medium">{hospital}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-green-800 font-medium">Accepting New Patients</span>
+                </div>
+                <p className="text-green-700 text-sm mt-1 ml-7">Virtual visits available</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Board Certifications */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-heading mb-10">Board Certifications</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

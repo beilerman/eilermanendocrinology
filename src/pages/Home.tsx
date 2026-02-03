@@ -113,11 +113,12 @@ export default function Home() {
             <div className="hidden lg:flex justify-center">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gold-600/20 rounded-full blur-2xl"></div>
-                <div className="relative w-80 h-80 bg-gradient-to-br from-navy-700 to-navy-800 rounded-full flex items-center justify-center border-4 border-gold-600/30">
-                  <div className="text-center">
-                    <p className="font-serif text-7xl font-bold text-gold-500">E</p>
-                    <p className="text-navy-300 text-sm mt-2">Eilerman Endocrinology</p>
-                  </div>
+                <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-gold-600/30">
+                  <img
+                    src="/images/dr-eilerman.jpg"
+                    alt="Dr. Bradley Scott Eilerman, M.D., M.H.I."
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
               </div>
             </div>
