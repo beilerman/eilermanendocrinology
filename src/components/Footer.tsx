@@ -9,14 +9,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gold-600 rounded-full flex items-center justify-center">
-                <span className="text-navy-900 font-serif font-bold text-xl">E</span>
-              </div>
-              <div>
-                <p className="font-serif text-lg font-semibold">Eilerman Endocrinology, LLC</p>
-                <p className="text-sm text-navy-300">Medical Consulting Since 2013</p>
-              </div>
+            <div className="mb-4">
+              <img
+                src="/images/logo.png"
+                alt="Eilerman Endocrinology, LLC"
+                className="h-14 w-auto brightness-0 invert"
+              />
+              <p className="text-sm text-navy-300 mt-2">Medical Consulting Since 2013</p>
             </div>
             <p className="text-navy-300 text-sm max-w-md">
               Expert witness services, pharmaceutical consulting, and medical advisory

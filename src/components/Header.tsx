@@ -37,16 +37,12 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-navy-900 rounded-full flex items-center justify-center">
-              <span className="text-white font-serif font-bold text-xl">E</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-serif text-lg font-semibold text-navy-900">
-                Eilerman Endocrinology
-              </p>
-              <p className="text-xs text-navy-500 -mt-1">Medical Consulting</p>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/images/logo.png"
+              alt="Eilerman Endocrinology"
+              className="h-12 sm:h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

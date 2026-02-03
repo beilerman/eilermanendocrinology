@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <!-- Background pill shape -->
+  <rect x="0" y="10" width="400" height="80" rx="8" ry="8" fill="none"/>
+
+  <!-- Logo mark - stylized E with medical cross hint -->
+  <g transform="translate(10, 10)">
+    <!-- Circle background -->
+    <circle cx="40" cy="40" r="38" fill="#102a43"/>
+    <!-- Inner ring -->
+    <circle cx="40" cy="40" r="32" fill="none" stroke="#d97706" stroke-width="2"/>
+    <!-- Stylized E -->
+    <text x="40" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="#ffffff">E</text>
+    <!-- Decorative arc -->
+    <path d="M 18 58 Q 40 68 62 58" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Company name -->
+  <g transform="translate(100, 0)">
+    <!-- Eilerman -->
+    <text x="0" y="45" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#102a43">Eilerman</text>
+    <!-- Endocrinology -->
+    <text x="0" y="75" font-family="Georgia, serif" font-size="22" fill="#102a43">Endocrinology</text>
+    <!-- Gold underline accent -->
+    <line x1="0" y1="82" x2="155" y2="82" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>
