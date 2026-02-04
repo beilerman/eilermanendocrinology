@@ -83,11 +83,11 @@ export default function Home() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
+      <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptMCAwdi02aC02djZoNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="hero-animate">
               <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
                 Expert Medical Consulting
               </p>
@@ -97,23 +97,31 @@ export default function Home() {
               <p className="text-xl md:text-2xl text-navy-200 mb-4">
                 Board-Certified Endocrinologist
               </p>
-              <p className="text-lg text-navy-300 mb-8 max-w-xl">
+              <p className="text-lg text-navy-300 mb-8 max-w-xl leading-relaxed">
                 Expert witness testimony, pharmaceutical consulting, and medical advisory services
                 backed by over two decades of clinical experience and landmark research.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary text-center">
+                <Link
+                  to="/contact"
+                  className="bg-gold-500 text-white px-8 py-3.5 rounded-md font-medium text-center
+                             hover:bg-gold-600 transition-all duration-300
+                             shadow-lg shadow-gold-500/25 hover:shadow-xl hover:shadow-gold-500/30
+                             hover:-translate-y-0.5"
+                >
                   Request Consultation
                 </Link>
-                <Link to="/about" className="btn-secondary bg-transparent text-white border-white hover:bg-white/10 text-center">
+                <Link to="/about" className="btn-secondary bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white/50 text-center">
                   View Credentials
                 </Link>
               </div>
             </div>
-            <div className="hidden lg:flex justify-center">
+
+            {/* Profile Photo - visible on all screens */}
+            <div className="flex justify-center animate-scale-in" style={{ animationDelay: '300ms' }}>
               <div className="relative">
-                <div className="absolute -inset-4 bg-gold-600/20 rounded-full blur-2xl"></div>
-                <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-gold-600/30">
+                <div className="absolute -inset-4 bg-gold-500/20 rounded-full blur-2xl"></div>
+                <div className="relative w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-gold-500/30 shadow-2xl">
                   <img
                     src="/images/dr-eilerman.jpg"
                     alt="Dr. Bradley Scott Eilerman, M.D., M.H.I."
@@ -125,7 +133,7 @@ export default function Home() {
           </div>
 
           {/* Stats Bar */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-navy-700 pt-12">
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-navy-700/50 pt-12 stagger-children">
             {credentials.map((cred) => (
               <div key={cred.label} className="text-center">
                 <p className="text-3xl md:text-4xl font-bold text-gold-400">{cred.value}</p>
@@ -142,10 +150,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1">
               <p className="text-gold-700 font-medium text-sm uppercase tracking-wide mb-2">Featured Research</p>
-              <h2 className="text-2xl md:text-3xl font-serif text-navy-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-serif text-navy-900 mb-4 tracking-tight">
                 CATALYST Trial Investigator
               </h2>
-              <p className="text-navy-600">
+              <p className="text-navy-600 leading-relaxed">
                 Lead investigator on the largest study ever conducted on hypercortisolism in
                 difficult-to-control diabetes. Published in <em>Diabetes Care</em> (2025),
                 demonstrating 24% prevalence of hypercortisolism and significant treatment outcomes.
@@ -161,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* Expertise Areas */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="section-heading">Areas of Expertise</h2>
@@ -170,16 +178,21 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseAreas.map((area) => (
-              <div key={area.title} className="card border border-navy-100 group hover:border-gold-300">
-                <div className="text-gold-600 mb-4 group-hover:text-gold-500 transition-colors">
+              <div
+                key={area.title}
+                className="border border-navy-100 rounded-xl p-6 group
+                           hover:border-gold-300 hover:shadow-lg hover:-translate-y-1
+                           transition-all duration-300 bg-white"
+              >
+                <div className="text-gold-500 mb-4 group-hover:text-gold-600 transition-colors duration-300">
                   {area.icon}
                 </div>
                 <h3 className="text-xl font-serif font-semibold text-navy-900 mb-2">
                   {area.title}
                 </h3>
-                <p className="text-navy-600">{area.description}</p>
+                <p className="text-navy-600 leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>
@@ -193,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-navy-50">
+      <section className="py-24 bg-navy-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="section-heading">Consulting Services</h2>
@@ -203,58 +216,58 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-navy-100 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-semibold text-navy-900 mb-3">Expert Witness</h3>
-              <p className="text-navy-600 mb-4">
+              <p className="text-navy-600 mb-4 leading-relaxed">
                 Comprehensive case review, standard of care analysis, deposition testimony,
                 and trial testimony for medical malpractice and personal injury cases.
               </p>
-              <Link to="/services" className="text-gold-700 font-medium hover:text-gold-800 inline-flex items-center">
+              <Link to="/services" className="text-gold-600 font-medium hover:text-gold-700 inline-flex items-center group/link">
                 Learn More
-                <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-navy-100 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-semibold text-navy-900 mb-3">Pharmaceutical Consulting</h3>
-              <p className="text-navy-600 mb-4">
+              <p className="text-navy-600 mb-4 leading-relaxed">
                 Advisory board participation, clinical trial consultation, medical education
                 development, and speaker programs for pharmaceutical companies.
               </p>
-              <Link to="/services" className="text-gold-700 font-medium hover:text-gold-800 inline-flex items-center">
+              <Link to="/services" className="text-gold-600 font-medium hover:text-gold-700 inline-flex items-center group/link">
                 Learn More
-                <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-navy-100 rounded-xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
               <h3 className="text-xl font-serif font-semibold text-navy-900 mb-3">Speaking Engagements</h3>
-              <p className="text-navy-600 mb-4">
+              <p className="text-navy-600 mb-4 leading-relaxed">
                 CME presentations, conference speaking, grand rounds, and medical education
                 programs on endocrinology topics.
               </p>
-              <Link to="/services" className="text-gold-700 font-medium hover:text-gold-800 inline-flex items-center">
+              <Link to="/services" className="text-gold-600 font-medium hover:text-gold-700 inline-flex items-center group/link">
                 Learn More
-                <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
@@ -264,23 +277,24 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="section-heading">What Patients Say</h2>
+            <h2 className="section-heading">Clinical Excellence</h2>
             <p className="section-subheading mx-auto">
-              Top 10% patient experience rating with over 550 reviews
+              Maintaining top 10% patient satisfaction across 550+ reviews reflects the same
+              thoroughness and attention to detail applied to every consulting engagement
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-navy-50 rounded-lg p-8 relative">
-                <svg className="absolute top-6 left-6 w-10 h-10 text-gold-300" fill="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-navy-50 rounded-xl p-8 relative hover:shadow-md transition-all duration-300">
+                <svg className="absolute top-6 left-6 w-10 h-10 text-gold-200" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <blockquote className="relative z-10 pt-8">
-                  <p className="text-navy-700 italic mb-4">"{testimonial.quote}"</p>
+                  <p className="text-navy-700 italic mb-4 leading-relaxed">"{testimonial.quote}"</p>
                   <footer className="text-sm text-navy-500">— {testimonial.source}</footer>
                 </blockquote>
               </div>
@@ -290,20 +304,26 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-navy-900 text-white">
+      <section className="py-24 bg-navy-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 tracking-tight">
             Ready to Discuss Your Case?
           </h2>
-          <p className="text-xl text-navy-300 mb-8">
+          <p className="text-xl text-navy-300 mb-10 leading-relaxed">
             Schedule a consultation to discuss expert witness services, pharmaceutical consulting,
             or speaking engagement opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary bg-gold-600 hover:bg-gold-700">
+            <Link
+              to="/contact"
+              className="bg-gold-500 text-white px-8 py-3.5 rounded-md font-medium text-center
+                         hover:bg-gold-600 transition-all duration-300
+                         shadow-lg shadow-gold-500/25 hover:shadow-xl hover:shadow-gold-500/30
+                         hover:-translate-y-0.5"
+            >
               Request Consultation
             </Link>
-            <Link to="/fees" className="btn-secondary border-white text-white hover:bg-white/10">
+            <Link to="/fees" className="btn-secondary border-white/30 text-white hover:bg-white/10 hover:border-white/50">
               View Fee Schedule
             </Link>
           </div>

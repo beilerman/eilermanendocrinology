@@ -55,7 +55,7 @@ export default function Fees() {
     <div className="pt-20">
       {/* Hero */}
       <section className="bg-navy-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-animate">
           <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
             Engagement Terms
           </p>
@@ -77,7 +77,7 @@ export default function Fees() {
             {feeSchedule.map((item, index) => (
               <div
                 key={index}
-                className="border border-navy-100 rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="border border-navy-100 rounded-xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="flex-grow">
@@ -98,7 +98,7 @@ export default function Fees() {
           </div>
 
           {/* Trial Minimum */}
-          <div className="mt-8 bg-navy-50 rounded-lg p-6">
+          <div className="mt-8 bg-navy-50 rounded-xl p-6">
             <h3 className="font-semibold text-navy-900 mb-2">Trial Day Minimum</h3>
             <p className="text-navy-600">
               Trial testimony requires a minimum of 8 hours per trial day at the $800/hour rate,
@@ -112,7 +112,7 @@ export default function Fees() {
       <section className="py-16 bg-gold-50 border-y border-gold-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-heading mb-6">Cancellation Policy</h2>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-white rounded-xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg className="w-6 h-6 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,7 +138,7 @@ export default function Fees() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {travelPolicy.map((item, index) => (
-              <div key={index} className="border border-navy-100 rounded-lg p-6">
+              <div key={index} className="border border-navy-100 rounded-xl p-6">
                 <h3 className="font-semibold text-navy-900 mb-2">{item.type}</h3>
                 <p className="text-navy-700 mb-2">{item.policy}</p>
                 <p className="text-navy-500 text-sm">{item.details}</p>
@@ -170,21 +170,21 @@ export default function Fees() {
           <h2 className="section-heading mb-8">Payment Terms</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="font-semibold text-navy-900 mb-3">Retainer</h3>
               <p className="text-navy-600 text-sm">
                 Non-refundable $500 retainer required to initiate engagement.
                 Applied to first invoice.
               </p>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="font-semibold text-navy-900 mb-3">Invoicing</h3>
               <p className="text-navy-600 text-sm">
                 Invoices issued monthly or upon completion of services.
                 Detailed time records provided.
               </p>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="font-semibold text-navy-900 mb-3">Payment Due</h3>
               <p className="text-navy-600 text-sm">
                 Payment due within 30 days of invoice date.

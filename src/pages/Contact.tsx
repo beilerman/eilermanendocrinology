@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 
 interface FormData {
   name: string
@@ -36,6 +37,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
@@ -64,12 +66,35 @@ export default function Contact() {
     if (!validateForm()) return
 
     setIsSubmitting(true)
+    setSubmitError(false)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/eilermanendocrinology@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || 'Not provided',
+          'Inquiry Type': formData.inquiryType || 'Not specified',
+          message: formData.message,
+          _subject: `New ${formData.inquiryType || 'Inquiry'} from ${formData.name}`,
+        }),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -77,7 +102,6 @@ export default function Contact() {
   ) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
@@ -87,7 +111,7 @@ export default function Contact() {
     return (
       <div className="pt-20">
         <section className="bg-navy-900 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-animate">
             <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
               Contact
             </p>
@@ -97,9 +121,9 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        <section className="py-24 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-8 flex items-center justify-center">
+            <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-8 flex items-center justify-center animate-scale-in">
               <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -107,13 +131,13 @@ export default function Contact() {
             <h2 className="text-2xl font-serif font-bold text-navy-900 mb-4">
               Your inquiry has been received
             </h2>
-            <p className="text-navy-600 mb-8">
+            <p className="text-navy-600 mb-8 leading-relaxed">
               Thank you for contacting Eilerman Endocrinology. We will review your inquiry
               and respond within 1-2 business days.
             </p>
-            <a href="/" className="btn-primary">
+            <Link to="/" className="btn-primary">
               Return to Home
-            </a>
+            </Link>
           </div>
         </section>
       </div>
@@ -124,14 +148,14 @@ export default function Contact() {
     <div className="pt-20">
       {/* Hero */}
       <section className="bg-navy-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-animate">
           <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
             Contact
           </p>
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
             Request a Consultation
           </h1>
-          <p className="text-xl text-navy-200 max-w-3xl">
+          <p className="text-xl text-navy-200 max-w-3xl leading-relaxed">
             Reach out to discuss expert witness services, pharmaceutical consulting,
             or speaking engagement opportunities.
           </p>
@@ -139,7 +163,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Info */}
@@ -150,7 +174,7 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-navy-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-navy-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -159,7 +183,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-navy-900">Email</h3>
                     <a
                       href="mailto:eilermanendocrinology@gmail.com"
-                      className="text-gold-700 hover:text-gold-800"
+                      className="text-gold-600 hover:text-gold-700 transition-colors"
                     >
                       eilermanendocrinology@gmail.com
                     </a>
@@ -167,7 +191,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-navy-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-navy-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -183,7 +207,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-navy-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-navy-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -199,9 +223,9 @@ export default function Contact() {
               </div>
 
               {/* Note for Attorneys */}
-              <div className="mt-8 p-6 bg-navy-50 rounded-lg">
+              <div className="mt-8 p-6 bg-navy-50 rounded-xl border border-navy-100">
                 <h3 className="font-semibold text-navy-900 mb-3">For Case Inquiries</h3>
-                <p className="text-navy-600 text-sm">
+                <p className="text-navy-600 text-sm leading-relaxed">
                   Please provide a brief description of the matter, including relevant
                   medical issues, timeline, and jurisdiction. This helps expedite the
                   conflict check and assessment process.
@@ -211,10 +235,21 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="bg-navy-50 rounded-lg p-8">
+              <div className="bg-navy-50 rounded-xl p-8 border border-navy-100">
                 <h2 className="text-2xl font-serif font-bold text-navy-900 mb-6">
                   Send an Inquiry
                 </h2>
+
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-700 text-sm">
+                      There was a problem sending your message. Please try emailing us directly at{' '}
+                      <a href="mailto:eilermanendocrinology@gmail.com" className="underline font-medium">
+                        eilermanendocrinology@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -228,7 +263,7 @@ export default function Contact() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`input-field ${errors.name ? 'border-red-500' : ''}`}
+                        className={`input-field ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
                         placeholder="Your full name"
                       />
                       {errors.name && (
@@ -246,7 +281,7 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`input-field ${errors.email ? 'border-red-500' : ''}`}
+                        className={`input-field ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
                         placeholder="your@email.com"
                       />
                       {errors.email && (
@@ -302,7 +337,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className={`input-field resize-none ${errors.message ? 'border-red-500' : ''}`}
+                      className={`input-field resize-none ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
                       placeholder="Please describe your inquiry. For case reviews, include a brief description of the matter, relevant medical issues, and timeline."
                     />
                     {errors.message && (
@@ -317,7 +352,10 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-gold-500 text-white px-8 py-3 rounded-md font-medium
+                                 hover:bg-gold-600 transition-all duration-300
+                                 shadow-sm hover:shadow-md hover:-translate-y-0.5
+                                 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">

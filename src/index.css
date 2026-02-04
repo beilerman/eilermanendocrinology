@@ -24,19 +24,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .btn-primary {
-    @apply bg-navy-800 text-white px-6 py-3 rounded font-medium
-           hover:bg-navy-900 transition-colors duration-200
-           focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2;
+    @apply bg-navy-800 text-white px-6 py-3 rounded-md font-medium
+           hover:bg-navy-900 transition-all duration-300 ease-out
+           focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2
+           shadow-sm hover:shadow-md active:shadow-sm
+           hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply bg-white text-navy-800 px-6 py-3 rounded font-medium
-           border-2 border-navy-800 hover:bg-navy-50 transition-colors duration-200
-           focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2;
+    @apply bg-white text-navy-800 px-6 py-3 rounded-md font-medium
+           border-2 border-navy-800 hover:bg-navy-50 transition-all duration-300 ease-out
+           focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2
+           hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl font-serif text-navy-900 mb-4;
+    @apply text-3xl md:text-4xl font-serif text-navy-900 mb-4 tracking-tight;
   }
 
   .section-subheading {
@@ -44,17 +47,71 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+    @apply bg-white rounded-xl shadow-md p-6
+           hover:shadow-xl hover:-translate-y-1
+           transition-all duration-300 ease-out;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 border border-navy-200 rounded
+    @apply w-full px-4 py-3 border border-navy-200 rounded-md bg-white
            focus:outline-none focus:ring-2 focus:ring-navy-500 focus:border-transparent
-           transition-all duration-200;
+           transition-all duration-200
+           placeholder:text-navy-400;
   }
 
   .label {
     @apply block text-sm font-medium text-navy-700 mb-2;
+  }
+}
+
+/* Hero entrance animations */
+.hero-animate > * {
+  opacity: 0;
+  animation: hero-fade-in 0.7s ease-out forwards;
+}
+
+.hero-animate > *:nth-child(1) { animation-delay: 0ms; }
+.hero-animate > *:nth-child(2) { animation-delay: 100ms; }
+.hero-animate > *:nth-child(3) { animation-delay: 200ms; }
+.hero-animate > *:nth-child(4) { animation-delay: 300ms; }
+.hero-animate > *:nth-child(5) { animation-delay: 400ms; }
+.hero-animate > *:nth-child(6) { animation-delay: 500ms; }
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation utility */
+.stagger-children > * {
+  opacity: 0;
+  animation: hero-fade-in 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 200ms; }
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+  animation: mobile-menu-slide 0.3s ease-out forwards;
+}
+
+@keyframes mobile-menu-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -68,10 +125,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #627d98;
+  background: #829ab1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #486581;
+  background: #627d98;
 }

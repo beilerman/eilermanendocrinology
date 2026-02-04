@@ -100,7 +100,7 @@ export default function About() {
       <section className="bg-navy-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 items-start">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 hero-animate">
               <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
                 About
               </p>
@@ -117,8 +117,8 @@ export default function About() {
                 consulting services for legal, pharmaceutical, and healthcare organizations.
               </p>
             </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-64 h-80 rounded-lg overflow-hidden border-2 border-gold-600/30 shadow-xl">
+            <div className="flex justify-center lg:justify-end animate-scale-in" style={{ animationDelay: '300ms' }}>
+              <div className="w-64 h-80 rounded-xl overflow-hidden border-2 border-gold-500/30 shadow-2xl">
                 <img
                   src="/images/dr-eilerman.jpg"
                   alt="Dr. Bradley Scott Eilerman, M.D., M.H.I."
@@ -136,7 +136,7 @@ export default function About() {
           <h2 className="section-heading mb-10">Current Positions</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {positions.map((position, index) => (
-              <div key={index} className="border border-navy-100 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <div key={index} className="border border-navy-100 rounded-xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                 <h3 className="font-semibold text-navy-900 text-lg">{position.title}</h3>
                 <p className="text-gold-700 font-medium">{position.organization}</p>
                 <p className="text-navy-500 text-sm mt-1">{position.period}</p>
@@ -157,7 +157,7 @@ export default function About() {
               <h2 className="section-heading mb-6">Practice Locations</h2>
               <div className="space-y-4">
                 {practiceLocations.map((location, index) => (
-                  <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
+                  <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
                     <svg className="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -174,7 +174,7 @@ export default function About() {
               <h2 className="section-heading mb-6">Hospital Affiliations</h2>
               <div className="space-y-4">
                 {hospitalAffiliations.map((hospital, index) => (
-                  <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
+                  <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
                     <svg className="w-5 h-5 text-gold-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
@@ -182,7 +182,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
-              <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+              <div className="mt-6 p-4 bg-green-50 rounded-xl border border-green-200">
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -202,7 +202,7 @@ export default function About() {
           <h2 className="section-heading mb-10">Board Certifications</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {certifications.map((cert, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 text-center shadow-sm">
+              <div key={index} className="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="w-16 h-16 bg-gold-100 rounded-full mx-auto mb-4 flex items-center justify-center">
                   <svg className="w-8 h-8 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -291,7 +291,7 @@ export default function About() {
           <h2 className="section-heading mb-10">Honors & Recognition</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {honors.map((honor, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-navy-50 rounded-lg">
+              <div key={index} className="flex items-start gap-4 p-4 bg-navy-50 rounded-xl hover:shadow-sm transition-all duration-300">
                 <div className="flex-shrink-0">
                   <svg className="w-6 h-6 text-gold-600" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />

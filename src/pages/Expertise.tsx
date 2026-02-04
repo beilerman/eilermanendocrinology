@@ -143,7 +143,7 @@ export default function Expertise() {
     <div className="pt-20">
       {/* Hero */}
       <section className="bg-navy-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-animate">
           <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
             Clinical Expertise
           </p>
@@ -175,7 +175,7 @@ export default function Expertise() {
                 <p className="text-navy-700 text-lg mb-6">
                   {featuredArea.description}
                 </p>
-                <div className="bg-white rounded-lg p-6 shadow-sm">
+                <div className="bg-white rounded-xl p-6 shadow-sm">
                   <h3 className="font-semibold text-navy-900 mb-4">CATALYST Trial (2023-2025)</h3>
                   <p className="text-navy-600 mb-4">
                     Dr. Eilerman served as an investigator on the CATALYST trial, the largest study
@@ -208,7 +208,7 @@ export default function Expertise() {
                 <h3 className="font-semibold text-navy-900 mb-4">Relevant Case Types</h3>
                 <ul className="space-y-3">
                   {featuredArea.caseTypes.map((caseType, index) => (
-                    <li key={index} className="flex items-center gap-3 bg-white rounded-lg p-4 shadow-sm">
+                    <li key={index} className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
                       <svg className="w-5 h-5 text-gold-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -230,7 +230,7 @@ export default function Expertise() {
             {otherAreas.map((area, index) => (
               <div
                 key={index}
-                className="border border-navy-100 rounded-lg p-8 hover:shadow-md transition-shadow"
+                className="border border-navy-100 rounded-xl p-8 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className="grid lg:grid-cols-3 gap-8">
                   <div className="lg:col-span-2">

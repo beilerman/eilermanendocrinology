@@ -80,7 +80,7 @@ export default function Services() {
     <div className="pt-20">
       {/* Hero */}
       <section className="bg-navy-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hero-animate">
           <p className="text-gold-400 font-medium mb-4 tracking-wide uppercase text-sm">
             Consulting Services
           </p>
@@ -98,7 +98,7 @@ export default function Services() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
-            <div className="w-14 h-14 bg-navy-100 rounded-lg flex items-center justify-center">
+            <div className="w-14 h-14 bg-navy-100 rounded-xl flex items-center justify-center">
               <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
               </svg>
@@ -111,14 +111,14 @@ export default function Services() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {expertWitnessServices.map((service, index) => (
-              <div key={index} className="border border-navy-100 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <div key={index} className="border border-navy-100 rounded-xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                 <h3 className="font-semibold text-navy-900 text-lg mb-3">{service.title}</h3>
                 <p className="text-navy-600">{service.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 bg-navy-50 rounded-lg p-8">
+          <div className="mt-12 bg-navy-50 rounded-xl p-8">
             <h3 className="font-serif text-xl font-semibold text-navy-900 mb-4">Case Types</h3>
             <div className="grid md:grid-cols-2 gap-4 text-navy-700">
               <ul className="space-y-2">
@@ -170,7 +170,7 @@ export default function Services() {
       <section className="py-20 bg-navy-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
-            <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm">
+            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm">
               <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
@@ -183,14 +183,14 @@ export default function Services() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {pharmaServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                 <h3 className="font-semibold text-navy-900 text-lg mb-3">{service.title}</h3>
                 <p className="text-navy-600">{service.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-lg p-8 shadow-sm">
+          <div className="bg-white rounded-xl p-8 shadow-sm">
             <h3 className="font-serif text-xl font-semibold text-navy-900 mb-6">Industry Experience</h3>
             <p className="text-navy-600 mb-4">
               Extensive consulting and speaker experience with major pharmaceutical and medical device companies:
@@ -210,7 +210,7 @@ export default function Services() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
-            <div className="w-14 h-14 bg-navy-100 rounded-lg flex items-center justify-center">
+            <div className="w-14 h-14 bg-navy-100 rounded-xl flex items-center justify-center">
               <svg className="w-7 h-7 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
@@ -226,7 +226,7 @@ export default function Services() {
               <h3 className="font-serif text-xl font-semibold text-navy-900 mb-6">Presentation Formats</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
@@ -237,7 +237,7 @@ export default function Services() {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -248,7 +248,7 @@ export default function Services() {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>

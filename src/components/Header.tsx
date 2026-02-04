@@ -31,7 +31,9 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 py-4'
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-lg shadow-lg shadow-navy-900/5 py-2'
+          : 'bg-white py-4'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +43,7 @@ export default function Header() {
             <img
               src="/images/logo.png"
               alt="Eilerman Endocrinology"
-              className="h-12 sm:h-14 w-auto"
+              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-10 sm:h-12' : 'h-12 sm:h-14'}`}
             />
           </Link>
 
@@ -53,14 +55,19 @@ export default function Header() {
                 to={link.path}
                 className={`text-sm font-medium transition-colors duration-200 pb-1 ${
                   location.pathname === link.path
-                    ? 'text-navy-900 border-b-2 border-gold-600'
+                    ? 'text-navy-900 border-b-2 border-gold-500'
                     : 'text-navy-600 hover:text-navy-900'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact" className="btn-primary text-sm py-2">
+            <Link
+              to="/contact"
+              className="bg-gold-500 text-white px-5 py-2.5 rounded-md text-sm font-medium
+                         hover:bg-gold-600 transition-all duration-300
+                         shadow-sm hover:shadow-md hover:-translate-y-0.5"
+            >
               Request Consultation
             </Link>
           </div>
@@ -68,7 +75,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-navy-700 hover:text-navy-900"
+            className="lg:hidden p-2 text-navy-700 hover:text-navy-900 transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -85,13 +92,13 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-navy-100">
-            <div className="flex flex-col space-y-3 pt-4">
+          <div className="lg:hidden mt-4 pb-4 border-t border-navy-100 mobile-menu-enter">
+            <div className="flex flex-col space-y-1 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-3 py-2 rounded text-sm font-medium ${
+                  className={`px-4 py-2.5 rounded-md text-sm font-medium transition-colors ${
                     location.pathname === link.path
                       ? 'bg-navy-50 text-navy-900'
                       : 'text-navy-600 hover:bg-navy-50 hover:text-navy-900'
@@ -100,9 +107,15 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/contact" className="btn-primary text-sm text-center mt-2">
-                Request Consultation
-              </Link>
+              <div className="pt-2 px-3">
+                <Link
+                  to="/contact"
+                  className="block bg-gold-500 text-white text-sm font-medium text-center
+                             px-5 py-2.5 rounded-md hover:bg-gold-600 transition-colors"
+                >
+                  Request Consultation
+                </Link>
+              </div>
             </div>
           </div>
         )}
