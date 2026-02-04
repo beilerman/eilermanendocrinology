@@ -158,10 +158,10 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-navy-900">Email</h3>
                     <a
-                      href="mailto:contact@eilermanendocrinology.com"
+                      href="mailto:eilermanendocrinology@gmail.com"
                       className="text-gold-700 hover:text-gold-800"
                     >
-                      contact@eilermanendocrinology.com
+                      eilermanendocrinology@gmail.com
                     </a>
                   </div>
                 </div>
